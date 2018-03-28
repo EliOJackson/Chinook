@@ -20,6 +20,8 @@ FROM Employee e
 WHERE Title IS "Sales Support Agent"
 
 -- Provide a query showing a unique list of billing countries from the Invoice table.
+SELECT DISTINCT i.BillingCountry
+FROM Invoice i
 
 
 -- Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
