@@ -166,5 +166,13 @@ GROUP BY t.trackID
 ORDER BY "Total Purchases" DESC LIMIT 5
 
 -- Provide a query that shows the top 3 best selling artists.
+select ar.name, ROUND(SUM(i.total),2) AS "Total Sales", COUNT(il.trackid) AS "Units Sold"
+FROM Artist as ar 
+JOIN Album al on al.artistid = ar.artistid
+JOIN Track t ON t.albumid = al.albumid
+JOIN InvoiceLine il ON il.trackID = t.trackid
+JOIN Invoice i on i.invoiceID = il.invoiceID
+GROUP BY ar.name
+ORDER BY "Total Sales" DESC LIMIT 3
 -- Provide a query that shows the most purchased Media Type.
 -- Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
