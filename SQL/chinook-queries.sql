@@ -122,6 +122,12 @@ GROUP BY e.EmployeeId
 ORDER BY "Total Sales" DESC limit 1
 
 -- Which sales agent made the most in sales over all?
+SELECT (e.FirstName || ' ' || e.LastName) AS 'Sales Agent Name', ROUND(SUM(i.total),2) as 'Total Sales'
+FROM Employee e 
+Join Customer c ON c.SupportRepId = e.EmployeeId
+JOIN Invoice i ON c.customerId = i.customerId
+GROUP BY e.EmployeeId
+ORDER BY "Total Sales" DESC limit 1
 -- Provide a query that shows the # of customers assigned to each sales agent.
 -- Provide a query that shows the total sales per country. Which country's customers spent the most?
 -- Provide a query that shows the most purchased track of 2013.
