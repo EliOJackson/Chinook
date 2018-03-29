@@ -38,6 +38,13 @@ Join Employee e ON e.EmployeeId = c.SupportRepId
 
 
 -- How many Invoices were there in 2009 and 2011? What are the respective total sales for each of those years?
+SELECT COUNT(i.InvoiceDate) as 'Total Sales', ROUND(SUM(i.Total),2) as "Invoice Total", substr(i.InvoiceDate, 1,4) as "Year"
+FROM Invoice i
+WHERE i.InvoiceDate LIKE '2009%'
+or i.InvoiceDate LIKE '2011%'
+GROUP BY substr(i.InvoiceDate, 1,4)
+
+
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each Invoice. HINT: GROUP BY
 -- Provide a query that includes the track name with each invoice line item.
