@@ -83,6 +83,12 @@ JOIN Track t ON pt.trackid = t.trackid
 GROUP BY p.name
 
 -- Provide a query that shows all the Tracks, but displays no IDs. The resultant table should include the Album name, Media type and Genre.
+SELECT t.name as "Track Name", al.title as "Album Title", m.name as "Media Type", g.name as "Genre", t.composer, t.Milliseconds, t.Bytes, t.UnitPrice
+FROM Track t
+JOIN Album al ON t.albumid = album.albumid
+JOIN MediaType m ON t.MediaTypeId = m.MediaTypeId
+JOIN Genre g ON t.genreId = g.genreId
+
 -- Provide a query that shows all Invoices but includes the # of invoice line items.
 -- Provide a query that shows total sales made by each sales agent.
 -- Which sales agent made the most in sales in 2009?
