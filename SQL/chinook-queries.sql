@@ -24,9 +24,19 @@ SELECT DISTINCT i.BillingCountry
 FROM Invoice i
 
 -- Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
+SELECT (e.FirstName || ' ' || e.Lastname) as FullName, invoice.*
+FROM Invoice 
+JOIN customer c ON c.CustomerId = invoice.CustomerId
+Join Employee e ON e.EmployeeId = c.SupportRepId 
 
 
 -- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
+SELECT (c.FirstName || ' ' || c.LastName) as 'Customer Name', i.Total as 'Invoice Total', i.BillingCountry, (e.FirstName || ' ' || e.Lastname) as 'Sales Agent Name'
+FROM Invoice i
+JOIN customer c ON c.CustomerId = i.CustomerId
+Join Employee e ON e.EmployeeId = c.SupportRepId 
+
+
 -- How many Invoices were there in 2009 and 2011? What are the respective total sales for each of those years?
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each Invoice. HINT: GROUP BY
