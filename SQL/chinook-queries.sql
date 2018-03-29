@@ -46,6 +46,10 @@ GROUP BY substr(i.InvoiceDate, 1,4)
 
 
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
+SELECT COUNT(il.InvoiceId) as 'Line Item Total'
+FROM InvoiceLine il
+where il.InvoiceId = '37'
+
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each Invoice. HINT: GROUP BY
 -- Provide a query that includes the track name with each invoice line item.
 -- Provide a query that includes the purchased track name AND artist name with each invoice line item.
