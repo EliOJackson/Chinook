@@ -174,5 +174,13 @@ JOIN InvoiceLine il ON il.trackID = t.trackid
 JOIN Invoice i on i.invoiceID = il.invoiceID
 GROUP BY ar.name
 ORDER BY "Total Sales" DESC LIMIT 3
+
 -- Provide a query that shows the most purchased Media Type.
+select m.name AS "Media Type", ROUND(SUM(i.total),2) AS "Total Sales", COUNT(il.trackid) AS "Units Sold"
+FROM MediaType as M 
+JOIN Track t ON t.MediaTypeId = m.MediaTypeId
+JOIN InvoiceLine il ON il.trackID = t.trackid
+JOIN Invoice i on i.invoiceID = il.invoiceID
+GROUP BY m.name
+ORDER BY "Total Sales" DESC LIMIT 3
 -- Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
