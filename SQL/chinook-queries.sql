@@ -150,14 +150,21 @@ GROUP BY i.BillingCountry
 ORDER BY "Total Sales" DESC limit 1
 
 -- Provide a query that shows the most purchased track of 2013.
-SELECT t.name AS "Track Name", COUNT(il.trackID) AS "Total Purchases"
-FROM Track t 
-JOIN InvoiceLine il ON il.trackID = t.trackID
-JOIN Invoice i ON i.invoiceID = il.invoiceID
-WHERE i.invoiceDate LIKE "2013%"
-GROUP BY t.name
+SELECT t.name AS "Track Name", sum(il.quantity) AS "Total Purchases"
+FROM InvoiceLine il
+JOIN Track t on il.trackID = t.trackID
+JOIN Invoice i on il.InvoiceId = i.InvoiceId
+WHERE i.InvoiceDate LIKE "2013%"
+GROUP BY t.trackID
 ORDER BY "Total Purchases" DESC
+
 -- Provide a query that shows the top 5 most purchased tracks over all.
+SELECT t.name AS "Track Name", sum(il.quantity) AS "Total Purchases"
+FROM InvoiceLine il
+JOIN Track t on il.trackID = t.trackID
+GROUP BY t.trackID
+ORDER BY "Total Purchases" DESC LIMIT 5
+
 -- Provide a query that shows the top 3 best selling artists.
 -- Provide a query that shows the most purchased Media Type.
 -- Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
