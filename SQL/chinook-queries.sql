@@ -62,7 +62,7 @@ FROM InvoiceLine il
 join Track t ON il.trackid = t.trackID
 
 -- Provide a query that includes the purchased track name AND artist name with each invoice line item.
-SELECT il.*, t.name, ar.name
+SELECT il.*, t.name as "Track Name", ar.name as "Artist Name"
 FROM InvoiceLine il
 join Track t ON il.trackid = t.trackID
 join Album ON t.albumid = album.albumid
