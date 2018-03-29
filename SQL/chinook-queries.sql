@@ -23,8 +23,9 @@ WHERE Title IS "Sales Support Agent"
 SELECT DISTINCT i.BillingCountry
 FROM Invoice i
 
-
 -- Provide a query that shows the invoices associated with each sales agent. The resultant table should include the Sales Agent's full name.
+
+
 -- Provide a query that shows the Invoice Total, Customer name, Country and Sale Agent name for all invoices and customers.
 -- How many Invoices were there in 2009 and 2011? What are the respective total sales for each of those years?
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for Invoice ID 37.
