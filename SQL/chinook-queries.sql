@@ -90,6 +90,11 @@ JOIN MediaType m ON t.MediaTypeId = m.MediaTypeId
 JOIN Genre g ON t.genreId = g.genreId
 
 -- Provide a query that shows all Invoices but includes the # of invoice line items.
+SELECT i.*, COUNT(il.invoiceID) as "Number of Invoice Line Items"
+FROM invoice i
+JOIN InvoiceLine il ON i.invoiceID = il.invoiceID
+GROUP BY i.invoiceID
+
 -- Provide a query that shows total sales made by each sales agent.
 -- Which sales agent made the most in sales in 2009?
 -- Which sales agent made the most in sales in 2010?
