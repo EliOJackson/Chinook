@@ -51,6 +51,11 @@ FROM InvoiceLine il
 where il.InvoiceId = '37'
 
 -- Looking at the InvoiceLine table, provide a query that COUNTs the number of line items for each Invoice. HINT: GROUP BY
+SELECT i.invoiceID, COUNT(il.InvoiceId) as 'Line Item Total'
+FROM Invoice i
+join InvoiceLine il ON i.invoiceID = il.invoiceID
+GROUP BY i.invoiceID
+
 -- Provide a query that includes the track name with each invoice line item.
 -- Provide a query that includes the purchased track name AND artist name with each invoice line item.
 -- Provide a query that shows the # of invoices per country. HINT: GROUP BY
