@@ -137,6 +137,18 @@ GROUP BY e.EmployeeId
 ORDER By "Total Customers" DESC 
 
 -- Provide a query that shows the total sales per country. Which country's customers spent the most?
+SELECT i.BillingCountry, ROUND(SUM(i.total),2) as "Total Sales"
+FROM Invoice i
+GROUP BY i.BillingCountry
+ORDER BY "Total Sales" DESC
+
+USA spent the most via 
+
+SELECT i.BillingCountry, ROUND(SUM(i.total),2) as "Total Sales"
+FROM Invoice i
+GROUP BY i.BillingCountry
+ORDER BY "Total Sales" DESC limit 1
+
 -- Provide a query that shows the most purchased track of 2013.
 -- Provide a query that shows the top 5 most purchased tracks over all.
 -- Provide a query that shows the top 3 best selling artists.
