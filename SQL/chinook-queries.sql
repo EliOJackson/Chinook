@@ -184,3 +184,13 @@ JOIN Invoice i on i.invoiceID = il.invoiceID
 GROUP BY m.name
 ORDER BY "Total Sales" DESC LIMIT 3
 -- Provide a query that shows the number tracks purchased in all invoices that contain more than one genre.
+
+SELECT i.InvoiceId AS "Invoice Id", group_concat(g.name, ', ') AS "Genres", COUNT(DISTINCT g.Name) AS "Total Genres",
+COUNT(il.TrackId) AS "Number of Tracks Purchased"
+FROM InvoiceLine il
+JOIN Invoice i ON il.InvoiceId = i.InvoiceId
+JOIN Track t ON t.TrackId = il.TrackId
+JOIN Genre g ON g.GenreId = t.GenreId
+GROUP BY i.InvoiceId
+HAVING  "Total Genres"> 1
+ORDER BY "Total Genres" DESC 
